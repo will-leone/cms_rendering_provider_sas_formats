@@ -1,10 +1,6 @@
 """
 Create Rendering Provider Specialty and Taxonomy SAS Formats
 
-Managing Team: Data Governance
-Analyst: Will D. Leone
-Last Updated: February 5, 2019
-
 Purpose:
   - Retrieve the latest CMS crosswalk for rendering provider specialty
     and taxonomy codes and descriptions.
@@ -16,15 +12,7 @@ Purpose:
     you will also need to install the requests and saspy modules using the
     'conda install requests' and 'conda install saspy' commands in Anaconda
     Prompt.
-  - You will also need to configure saspy using the instructions given here:
-      https://confluence.evolenthealth.com/display/AnalyticsActuarial
-      /SASpy+configuration+tutorial
-
- Next Steps:
- The output SAS datasets and CSV file will be saved to the SOURCE file within
- the all-client format directory (/sasprod/dw/formats). Once QA is done, the
- old datasets will need to be saved to the OLD subdirectory and the new datasets
- will need to be pushed into the main directory.
+  - You will also need to configure saspy.
 
 """
 
@@ -220,7 +208,3 @@ for name, ds_list in initial.items():
     sas_out = sas.df2sd(df, table=name, libref='fmt')
 
 sas.disconnect()
-
-# As needed, use the pandas chunksize options to process in batches:
-# for chunk in pd.read_csv(filename, chunksize=N):
-#   *do something with the chunk of N records*
